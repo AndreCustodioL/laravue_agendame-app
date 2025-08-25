@@ -15,9 +15,12 @@
     "@mdi/font": "7.4.47",
     "axios": "^1.11.0",
     "pinia": "^3.0.3",
+    "vee-validate": "^4.15.1",
     "vue": "^3.5.17",
     "vue-tabler-icons": "^2.21.0",
-    "vuetify": "^3.9.1"
+    "vuetify": "^3.9.1",
+    "yup": "^1.7.0",
+    "yup-locale-pt": "^0.0.9"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.2.3",

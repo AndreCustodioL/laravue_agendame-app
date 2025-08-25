@@ -14,7 +14,7 @@
                 <div class="d-flex flex-wrap align-center ml-n2">
                     <div class="ml-sm-auto">
                         <RouterLink to="/"
-                            class="text-primary text-decoration-none text-body-1 opacity-1 font-weight-medium">Esqueceu sua senha?</RouterLink>
+                        class="text-primary text-decoration-none text-body-1 opacity-1 font-weight-medium">Esqueceu sua senha?</RouterLink>
                     </div>
                 </div>
             </v-col>
@@ -32,6 +32,7 @@ import axios from 'axios';
 import {useForm,useField} from 'vee-validate';
 import {object, string} from 'yup';
 import { useRouter } from 'vue-router';
+import { useAuthStore } from '@/stores/auth';
 
 const schema = object({
     email: string().required().email().label('E-mail'),
@@ -51,23 +52,24 @@ const {value: password} = useField('password')
 
 const feedbackMessage = ref('');
 
+const authStore = useAuthStore()
+
 
 const router = useRouter()
 async function login(values){
     feedbackMessage.value = '';
-    axios.get('sanctum/csrf-cookie')
-        .then(()=>{
-            axios.post('api/login',{
-                'email': values.email,
-                'password': values.password
-            })
-            .then(() => {
-                router.push({name:'dashboard'})
-            })
-            .catch(() => {
-                feedbackMessage.value = 'Seu e-mail ou senha estão incorretos.'
-            })
+    authStore
+    .sanctum()
+    .then(()=>{
+        authStore
+        .login(values.email,values.password)
+        .then(() => {
+            router.push({name:'dashboard'})
         })
+        .catch(() => {
+            feedbackMessage.value = 'Seu e-mail ou senha estão incorretos.'
+        })
+    })
 }
 
 

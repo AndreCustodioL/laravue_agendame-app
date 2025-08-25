@@ -1,10 +1,10 @@
 import axios from "axios";
 import { defineStore } from "pinia";
+import { useMeStore } from "@/stores/me";
 
 
 export const useAuthStore = defineStore('auth',{
     state: ()=> ({
-        user: null,
     }),
     actions: {
         sanctum(){
@@ -14,8 +14,10 @@ export const useAuthStore = defineStore('auth',{
             return axios.post('api/login',{
                 email,
                 password
-            }).then((response)=>{
-                this.user = response.data.data
+            })
+            .then((response)=>{
+                const meStore = useMeStore();
+                meStore.user = response.data.data
             })
         }
     },

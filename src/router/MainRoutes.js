@@ -1,6 +1,9 @@
+import { needAuthentication } from '@/router/guards';
+
 const MainRoutes = {
     path: '/',
     component: () => import('@/layouts/full/FullLayout.vue'),
+    beforeEnter: needAuthentication,
     children: [
         {
             name: 'dashboard',

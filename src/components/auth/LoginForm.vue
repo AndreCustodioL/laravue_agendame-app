@@ -59,17 +59,13 @@ const router = useRouter()
 async function login(values){
     feedbackMessage.value = '';
     authStore
-    .sanctum()
-    .then(()=>{
-        authStore
-        .login(values.email,values.password)
+    .login(values.email,values.password)
         .then(() => {
             router.push({name:'dashboard'})
         })
         .catch(() => {
             feedbackMessage.value = 'Seu e-mail ou senha estão incorretos.'
         })
-    })
 }
 
 

@@ -1,6 +1,6 @@
 <script setup>
-import { useAuthStore } from '@/stores/auth';
-const authStore = useAuthStore()
+import { useMeStore } from '@/stores/me';
+const meStore = useMeStore()
 /*Call Components*/
 // import SalesOverview from '@/components/dashboard/SalesOverview.vue';
 // import YearlyBreakup from '@/components/dashboard/YearlyBreakup.vue';
@@ -13,7 +13,8 @@ const authStore = useAuthStore()
     <div>
     Dashboard
     <br>
-    <pre>{{ authStore.isLoggedIn }}</pre>
+    <pre>{{ meStore.user }}</pre>
+    <pre>{{ meStore.isLoggedIn }}</pre>
 
     </div>
 </template>

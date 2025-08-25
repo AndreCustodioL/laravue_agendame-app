@@ -1,7 +1,10 @@
+import { redirecIfAuthenticated } from './guards';
+
 export default [
   {
     path: '/login',
     component: () => import('@/layouts/blank/BlankLayout.vue'),
+    beforeEnter: redirecIfAuthenticated,
     children: [
       {
         name: 'login',

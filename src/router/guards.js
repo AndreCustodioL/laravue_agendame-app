@@ -18,3 +18,11 @@ export const needAuthentication = (to,from,next) => {
     }
 }
 
+export const needVerifyEmailToken = (to,from,next) => {
+    if(!to.query?.token) {
+        next({name:'login'});
+    } else {
+        next();
+    }
+}
+

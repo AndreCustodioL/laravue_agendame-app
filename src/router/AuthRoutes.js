@@ -1,4 +1,4 @@
-import { redirecIfAuthenticated } from './guards';
+import { redirecIfAuthenticated, needVerifyEmailToken } from './guards';
 
 export default [
   {
@@ -21,6 +21,18 @@ export default [
         name: 'register',
         path: '',
         component: () => import('@/views/auth/Register.vue'),
+      },
+    ],
+  },
+  {
+    path: '/verificar-email',
+    component: () => import('@/layouts/blank/BlankLayout.vue'),
+    beforeEnter: needVerifyEmailToken,
+    children: [
+      {
+        name: 'verifyEmail',
+        path: '',
+        component: () => import('@/views/auth/VerifyEmail.vue'),
       },
     ],
   },

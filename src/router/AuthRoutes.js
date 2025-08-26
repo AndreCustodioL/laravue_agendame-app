@@ -36,4 +36,15 @@ export default [
       },
     ],
   },
+  {
+    path: '/esqueci-senha',
+    component: () => import('@/layouts/blank/BlankLayout.vue'),
+    children: [
+      {
+        name: 'forgotPassword',
+        path: '',
+        component: () => import('@/views/auth/ForgotPassword.vue'),
+      },
+    ],
+  },
 ];

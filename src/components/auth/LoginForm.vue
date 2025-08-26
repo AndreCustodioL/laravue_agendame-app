@@ -13,7 +13,7 @@
             <v-col cols="12" class="pt-0">
                 <div class="d-flex flex-wrap align-center ml-n2">
                     <div class="ml-sm-auto">
-                        <RouterLink to="/"
+                        <RouterLink :to="{name:'forgotPassword'}"
                         class="text-primary text-decoration-none text-body-1 opacity-1 font-weight-medium">Esqueceu sua senha?</RouterLink>
                     </div>
                 </div>
@@ -28,7 +28,6 @@
 <script setup>
 import { ref } from 'vue';
 const checkbox = ref(true);
-import axios from 'axios';
 import {useForm,useField} from 'vee-validate';
 import {object, string} from 'yup';
 import { useRouter } from 'vue-router';

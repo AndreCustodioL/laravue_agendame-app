@@ -65,8 +65,8 @@ const feedbackMessage = ref('')
 
 const submit = handleSubmit(async (values)=>{
     const authStore = useAuthStore()
-    await authStore.register(values.first_name,values.email,values.password).catch(()=> {
-        feedbackMessage.value = 'Usuário já cadastrado.'
+    await authStore.register(values.first_name,values.email,values.password).catch((e)=> {
+        feedbackMessage.value = e.message
     });
 })
 

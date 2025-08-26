@@ -38,8 +38,8 @@ const submit = handleSubmit(async (values) => {
         .then(()=>{
             emits('after-request')
         })
-        .catch(()=>{
-            feedbackMessage.value = 'Usuário não encontrado.'
+        .catch((e)=>{
+            feedbackMessage.value = e.message
         })
 });
 

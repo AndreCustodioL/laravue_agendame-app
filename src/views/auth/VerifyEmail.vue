@@ -46,9 +46,9 @@
             status.value = 'success';
             feedbackMessage.value = 'E-mail verificado com sucesso!';
         })
-        .catch(()=>{
+        .catch((e)=>{
             status.value = 'error';
-            feedbackMessage.value = 'Erro ao verificar o e-mail!';
+            feedbackMessage.value = e.message;
 
         })
         .finally(()=>{

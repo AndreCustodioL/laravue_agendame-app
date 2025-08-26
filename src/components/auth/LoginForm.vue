@@ -62,8 +62,8 @@ async function login(values){
         .then(() => {
             router.push({name:'dashboard'})
         })
-        .catch(() => {
-            feedbackMessage.value = 'Seu e-mail ou senha estão incorretos.'
+        .catch((e) => {
+            feedbackMessage.value = e.message
         })
 }
 

@@ -53,8 +53,8 @@ const submit = handleSubmit(async (values) => {
     .then(()=>{
         emits('after-reset')
     })
-    .catch(()=>{
-        feedbackMessage.value = 'Token inválido!'
+    .catch((e)=>{
+        feedbackMessage.value = e.message
     })
 });
 
